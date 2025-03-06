@@ -1,0 +1,5 @@
+{
+    "java.checkstyle.properties": {
+        "config_loc": "${workspaceFolder}/config/checkstyle/"
+    }
+}
