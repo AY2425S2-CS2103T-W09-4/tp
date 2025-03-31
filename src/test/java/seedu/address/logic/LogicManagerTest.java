@@ -52,7 +52,7 @@ public class LogicManagerTest {
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
         String deleteCommand = "delete 9";
-        assertCommandException(deleteCommand, MESSAGE_COMMAND_NOT_IN_USE);
+        assertCommandException(deleteCommand, "The provided wedding index does not exist!");
     }
 
     @Test

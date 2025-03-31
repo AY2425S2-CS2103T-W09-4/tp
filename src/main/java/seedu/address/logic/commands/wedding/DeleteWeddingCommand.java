@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.WeddingModel;
 import seedu.address.model.wedding.Wedding;
@@ -40,4 +41,20 @@ public class DeleteWeddingCommand extends Command {
         model.deleteWedding(weddingToDelete);
         return new CommandResult(String.format(MESSAGE_SUCCESS));
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof DeleteWeddingCommand)) {
+            return false;
+        }
+
+        DeleteWeddingCommand otherDeleteCommand = (DeleteWeddingCommand) other;
+        return targetIndex.equals(otherDeleteCommand.targetIndex);
+    }
+
 }
