@@ -71,7 +71,7 @@ with(this){return _c('p',[_v("The "),_c('code',{pre:true,attrs:{"class":"hljs in
 with(this){return _c('p',[_v("The "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("UI")]),_v(" component,")])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_v("executes user commands using the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Logic")]),_v(" component.")]),_v(" "),_c('li',[_v("listens for changes to "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("WeddingModel")]),_v(" data so that the UI can be updated with the modified data.")]),_v(" "),_c('li',[_v("In particular, it listens for changes to the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("UniqueWeddingList")]),_v(", as well as the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("UniquePersonList")]),_v(" of\nthe currently open wedding.")]),_v(" "),_c('li',[_v("keeps a reference to the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Logic")]),_v(" component, because the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("UI")]),_v(" relies on the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Logic")]),_v(" to execute commands.")]),_v(" "),_c('li',[_v("depends on some classes in the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model")]),_v(" component, as it displays "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Person")]),_v(" object residing in the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model")]),_v(".")])])}
+with(this){return _c('ul',[_c('li',[_v("executes user commands using the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Logic")]),_v(" component.")]),_v(" "),_c('li',[_v("listens for changes to "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model")]),_v(" data so that the UI can be updated with the modified data.")]),_v(" "),_c('li',[_v("keeps a reference to the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Logic")]),_v(" component, because the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("UI")]),_v(" relies on the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Logic")]),_v(" to execute commands.")]),_v(" "),_c('li',[_v("depends on some classes in the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model")]),_v(" component, as it displays "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Person")]),_v(" object residing in the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model")]),_v(".")])])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"logic-component"}},[_v("Logic component"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#logic-component","onclick":"event.stopPropagation()"}})])}
@@ -227,7 +227,7 @@ with(this){return _c('p',[_c('em',[_v("{More to be added}")])])}
 with(this){return _c('h3',{attrs:{"id":"use-cases"}},[_v("Use cases"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#use-cases","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_v("(For all use cases below, the "),_c('strong',[_v("System")]),_v(" is the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("HappyEverAfter")]),_v(" and the "),_c('strong',[_v("Actor")]),_v(" is the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("user")]),_v(", unless specified otherwise)")])}
+with(this){return _c('p',[_v("(For all use cases below, the "),_c('strong',[_v("System")]),_v(" is the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("HappilyEverAfter")]),_v(" and the "),_c('strong',[_v("Actor")]),_v(" is the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("user")]),_v(", unless specified otherwise)")])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Use case: Creating a new wedding")])])}
@@ -236,13 +236,13 @@ with(this){return _c('p',[_c('strong',[_v("Use case: Creating a new wedding")])]
 with(this){return _c('p',[_c('strong',[_v("MSS")])])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_c('p',[_v("User creates a new wedding")])]),_v(" "),_c('li',[_c('p',[_v("HappyEverAfter provides confirmation that the wedding has been created")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
+with(this){return _c('ol',[_c('li',[_c('p',[_v("User creates a new wedding")])]),_v(" "),_c('li',[_c('p',[_v("HappilyEverAfter provides confirmation that the wedding has been created")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. There exists a wedding with the same name.")]),_v(" "),_c('p',[_v("2ai.HappyEverAfter shows an error message.")]),_v(" "),_c('p',[_v("Use case resumes at step 1.")]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("2b. Wedding name provided is in an invalid format.")]),_v(" "),_c('p',[_v("2bi. HappyEverAfter shows an error message.")]),_v(" "),_c('p',[_v("Use case resumes at step 2.")])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. There exists a wedding with the same name.")]),_v(" "),_c('p',[_v("2ai. HappilyEverAfter shows an error message.")]),_v(" "),_c('p',[_v("Use case resumes at step 1.")]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("2b. Wedding name provided is in an invalid format.")]),_v(" "),_c('p',[_v("2bi. HappilyEverAfter shows an error message.")]),_v(" "),_c('p',[_v("Use case resumes at step 2.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Use case: Adding a person to a wedding")])])}
@@ -251,13 +251,13 @@ with(this){return _c('p',[_c('strong',[_v("Use case: Adding a person to a weddin
 with(this){return _c('p',[_c('strong',[_v("MSS")])])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to list weddings")])]),_v(" "),_c('li',[_c('p',[_v("HappyEverAfter shows a list of weddings")])]),_v(" "),_c('li',[_c('p',[_v("User opens the wedding they want")])]),_v(" "),_c('li',[_c('p',[_v("HappyEverAfter provides confirmation that the wedding has been opened")])]),_v(" "),_c('li',[_c('p',[_v("User adds contact information of person")])]),_v(" "),_c('li',[_c('p',[_v("HappyEverAfter acts the person to that wedding.")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
+with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to list weddings")])]),_v(" "),_c('li',[_c('p',[_v("HappilyEverAfter shows a list of weddings")])]),_v(" "),_c('li',[_c('p',[_v("User opens the wedding they want")])]),_v(" "),_c('li',[_c('p',[_v("HappilyEverAfter provides confirmation that the wedding has been opened")])]),_v(" "),_c('li',[_c('p',[_v("User adds contact information of person")])]),_v(" "),_c('li',[_c('p',[_v("HappilyEverAfter acts the person to that wedding.")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The list is empty.")]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("5a. Contact information provided is in an invalid format.")]),_v(" "),_c('p',[_v("5ai. HappyEverAfter shows an error message.")]),_v(" "),_c('p',[_v("Use case resumes at step 2.")])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("2a. The list is empty.")]),_v(" "),_c('p',[_v("Use case ends.")])]),_v(" "),_c('li',[_c('p',[_v("5a. Contact information provided is in an invalid format.")]),_v(" "),_c('p',[_v("5ai. HappilyEverAfter shows an error message.")]),_v(" "),_c('p',[_v("Use case resumes at step 2.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Use case: Delete a person from a wedding")])])}
@@ -266,7 +266,7 @@ with(this){return _c('p',[_c('strong',[_v("Use case: Delete a person from a wedd
 with(this){return _c('p',[_c('strong',[_v("MSS")])])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to list weddings")])]),_v(" "),_c('li',[_c('p',[_v("HappyEverAfter shows a list of weddings")])]),_v(" "),_c('li',[_c('p',[_v("User opens the wedding they want")])]),_v(" "),_c('li',[_c('p',[_v("HappyEverAfter provides confirmation that the wedding has been opened")])]),_v(" "),_c('li',[_c('p',[_v("User requests to list persons associated with that wedding")])]),_v(" "),_c('li',[_c('p',[_v("HappyEverAfter shows a list of persons")])]),_v(" "),_c('li',[_c('p',[_v("User requests to delete a specific person in the list")])]),_v(" "),_c('li',[_c('p',[_v("HappyEverAfter deletes the person")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
+with(this){return _c('ol',[_c('li',[_c('p',[_v("User requests to list weddings")])]),_v(" "),_c('li',[_c('p',[_v("HappilyEverAfter shows a list of weddings")])]),_v(" "),_c('li',[_c('p',[_v("User opens the wedding they want")])]),_v(" "),_c('li',[_c('p',[_v("HappilyEverAfter provides confirmation that the wedding has been opened")])]),_v(" "),_c('li',[_c('p',[_v("User requests to list persons associated with that wedding")])]),_v(" "),_c('li',[_c('p',[_v("HappilyEverAfter shows a list of persons")])]),_v(" "),_c('li',[_c('p',[_v("User requests to delete a specific person in the list")])]),_v(" "),_c('li',[_c('p',[_v("HappilyEverAfter deletes the person")]),_v(" "),_c('p',[_v("Use case ends.")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_c('strong',[_v("Extensions")])])}
@@ -305,7 +305,7 @@ with(this){return _c('ol',[_c('li',[_c('p',[_v("Initial launch")]),_v(" "),_c('o
 with(this){return _c('h3',{attrs:{"id":"adding-a-wedding"}},[_v("Adding a wedding"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#adding-a-wedding","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_c('p',[_v("Adding a wedding to "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("HappyEverAfter")])]),_v(" "),_c('ol',[_c('li',[_c('p',[_v("Prerequisites: Application must be open")])]),_v(" "),_c('li',[_c('p',[_v("Test case: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("new n/NAME d/09092027")]),_c('br'),_v("\nExpected: The application will prompt addition of the contact details of bride and groom.")])]),_v(" "),_c('li',[_c('p',[_v("Test case: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("new NAME")]),_c('br'),_v("\nExpected: No wedding is created. Error details shown in the status message. Status bar remains the same.")])]),_v(" "),_c('li',[_c('p',[_v("Other incorrect "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("new")]),_v(" commands to try: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("new")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("new n/NAME d/DATE")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("...")]),_v(" (where DATE is not a recognised date format)"),_c('br'),_v("\nExpected: Similar to previous.")])])])]),_v(" "),_c('li',[_c('p',[_c('em',[_v("{ more test cases …​ }")])])])])}
+with(this){return _c('ol',[_c('li',[_c('p',[_v("Adding a wedding to "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("HappilyEverAfter")])]),_v(" "),_c('ol',[_c('li',[_c('p',[_v("Prerequisites: Application must be open")])]),_v(" "),_c('li',[_c('p',[_v("Test case: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("new n/NAME d/09092027")]),_c('br'),_v("\nExpected: The application will prompt addition of the contact details of bride and groom.")])]),_v(" "),_c('li',[_c('p',[_v("Test case: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("new NAME")]),_c('br'),_v("\nExpected: No wedding is created. Error details shown in the status message. Status bar remains the same.")])]),_v(" "),_c('li',[_c('p',[_v("Other incorrect "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("new")]),_v(" commands to try: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("new")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("new n/NAME d/DATE")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("...")]),_v(" (where DATE is not a recognised date format)"),_c('br'),_v("\nExpected: Similar to previous.")])])])]),_v(" "),_c('li',[_c('p',[_c('em',[_v("{ more test cases …​ }")])])])])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"saving-data"}},[_v("Saving data"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#saving-data","onclick":"event.stopPropagation()"}})])}
@@ -314,6 +314,6 @@ with(this){return _c('h3',{attrs:{"id":"saving-data"}},[_v("Saving data"),_c('a'
 with(this){return _c('ol',[_c('li',[_c('p',[_v("Dealing with missing/corrupted data files")]),_v(" "),_c('ol',[_c('li',[_c('em',[_v("{explain how to simulate a missing/corrupted file, and the expected behavior}")])])])]),_v(" "),_c('li',[_c('p',[_c('em',[_v("{ more test cases …​ }")])])])])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Mon, 31 Mar 2025, 23:02:03 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Mon, 31 Mar 2025, 23:02:42 GMT+8]")])])])}
 }];
   
