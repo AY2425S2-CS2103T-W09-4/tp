@@ -6,14 +6,17 @@
 
 # HappyEverAfter User Guide
 
-Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner designed to help wedding organisers keep track of their weddings. HappyEverAfter provides a plethora of features, such as the creation of weddings, and the adding of people with roles to each wedding. Wedding Planning can get hectic, especially for a busy planner like you, and with just some typing commands, HappyEverAfter can help you get organised and sorted in no time!
+Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner designed to help wedding organisers keep track of their weddings. 
+HappyEverAfter provides a plethora of features, including creating weddings and adding different people with different roles to each wedding. 
+Wedding planning can get hectic, especially for a busy planner like you, and with just some simple commands, HappyEverAfter can help you get organised and sorted in no time!
 
 <!-- * Table of Contents -->
 ## Table of Contents
 
 1. [Quick Start](#quick-start)
-2. [Command Formats](#feature-details)
-3. [Features](#features)
+2. [Feature Preface](#feature-details)
+3. [GUI Overview](#gui-overview)
+4. [Features](#features)
     - [Wedding Management](#wedding-management)
         - [Creating a new wedding](#creating-a-wedding-new)
         - [Opening a wedding](#opening-a-wedding--open)
@@ -31,43 +34,51 @@ Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner desig
     - [System Commands](#system-commands)
         - [Viewing help](#viewing-help--help)
         - [Exiting the program](#exiting-the-program-exit)
-4. [Data Storage](#data-storage)
-5. [FAQ](#faq)
+5. [Data Storage](#data-storage)
+6. [FAQ](#faq)
 7. [Command Summary](#command-summary)
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
-   - [Java Installation](https://www.java.com/en/download/help/download_options.html)
+1. Ensure you have Java `17` or above installed in your Computer. To check your Java version, open a terminal or command prompt and type `java -version`<br> If Java is not installed or is an older version:
+   - **Windows / Linux users:** Follow the instructions to download and install the latest JDK here : [Java Installation](https://www.java.com/en/download/help/download_options.html)
    - **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 2. Download the latest version of HappyEverAfter
-   - Click the following link [here](https://github.com/AY2425S2-CS2103T-W09-4/tp/releases) and download the file `happyeverafter.jar`.
-3. Move the file to the folder
-    - Copy the file to the folder you want to use as the _home folder_ for your HappyEverAfter.
-4. Here are the steps for you to run HappyEverAfter
-   - Open the "Command Prompt" (for Windows) or "Terminal" (for Mac/Linux).
+   - Click the following link [here](https://github.com/AY2425S2-CS2103T-W09-4/tp/releases) and download the file `happyeverafter.jar`. Ensure that you download from the latest release.
+3. Move the file to a folder
+    - Copy the file to the folder you want to use as the _home folder_ for your HappyEverAfter. The program will store program data and save data in this folder.
+    - Tip : Choose a convenient folder location, such as a folder on your home screen. Ensure that you have read and write permissions to the folder.
+4. Running HappyEverAfter
+   - Open the "Command Prompt" (for Windows, press `Win + R`, type `cmd` and hit Enter) or "Terminal" (for Mac/Linux, search for the Terminal app).
    - Enter `cd` followed by the folder location where you saved the HappyEverAfter file. For example:
      - On Windows: `cd C:\Users\JohnDoe\Desktop\HappyEverAfter`
      - On Mac/Linux: `cd /Users/JohnDoe/Desktop/HappyEverAfter`
    - Run this command to launch HappyEverAfter: `java -jar happyeverafter.jar`
-   - A Graphical User Interface (GUI) similar to the image below should appear in a few seconds. Note how the app contains some sample data.
+   - A Graphical User Interface (GUI) similar to the image below should appear in a few seconds. Note how the app contains some sample data. You can choose to clear the data for a clean setup.
 
       ![Ui](images/Ui.png)
 
-5. Type the command in the command box and press Enter to execute it.
-   - See [features](#features) for the comprehensive list of all possible commands to execute and [command summary](#command-summary) for a brief overview.
+5. Type the command in the command box where it says `Enter command here...` and press Enter to execute the command.
+   - See [features](#features) for a comprehensive list of all commands and [command summary](#command-summary) for a brief overview.
+   - Some example commands you can try:
+     - `list` : Lists all weddings
+     - `clear` : Clears all weddings
+     - `exit` : Exits HappyEverAfter
+     - `new n/John and Janice's Wedding d/21082025` : Creates a new wedding named `John and Janice's Wedding` on `21 Aug 2025`. Enter the subsequent commands when prompted.
+       - `add n/Janice p/98765432 e/janice@gmail.com a/Block 09 Prince George's Park t/bride` : Add `Janice` as a `bride`
+       - `add n/John p/98989898 e/john@gmail.com a/Block 10 Prince George's Park t/groom` : Add `John` as a `groom`
+     - `sort` : Sorts weddings in ascending order of the date
 
 [Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Feature-Details
+## Feature-Preface
 
-<box type="info" seamless>
-
-### Things you need to know about the features:
+<box type="info">
+### Some things you need to know about the features before getting started:
 
 - Commands are case-insensitive.
   - e.g. `Help` and `help` will run the same command.
@@ -97,7 +108,28 @@ Welcome to HappyEverAfter - a quick, robust, and intuitive Wedding Planner desig
   
 [Back to Table of Contents](#table-of-contents)
 
-# Features
+## GUI Overview
+HappyEverAfter uses a Graphical User Interface (GUI) to display visual information to the user. Here is a brief overview of the GUI.
+
+![Ui](images/Ui.png)
+
+On the left pane of the GUI, all weddings are listed. If you have more weddings than the height of the left pane, you can use the mousewheel
+to scroll down the weddings. Each wedding is displayed with the `name` of the wedding (eg `Jason and Wendy`) and the `date` of the wedding (eg `09 June 2025`). The
+`index` of the wedding is displayed on the left of the `name`, from 1 onward. You can use this `index` for commands such as `open` and `delete`.
+
+At the bottom of the GUI is the section for you to enter commands. Type in your command in the pane where it says
+`Enter command here...` and press Enter to run the command. The result of the command will be displayed in the grey pane
+above the input box.
+
+![Ui Opened](images/openWedding.png)
+
+When a wedding is opened using the `open` command (eg `open 1`), it is set as an active wedding and displayed
+on the right pane of the GUI. The pane displays all members of the wedding, starting with the `bride` and `groom`. 
+If the number of members exceeds the height of the pane, you can scroll within the pane using your mousewheel. Each member card
+displays the following information in order : The `name` of the person, the `tags` of the person, the `phone number` of the person,
+the `address` of the person and the `email` of the person.
+
+## Features
 
 ## Wedding Management
 
@@ -116,19 +148,25 @@ You can create and add a new wedding to the wedding planner.
 Format: `new n/WEDDING_NAME d/DATE`
 
 Example:
-- `new n/John & Mary d/25122025`
+- `new n/John & Mary d/25122025` : Adds a wedding named `John & Mary` that happens on `25 December 2025`.
 
 <box type="info">
 Note:
 
 - HappyEverAfter will prompt you immediately to enter the details of the bride and the groom to confirm
-  the wedding.
+  the wedding. Follow the instructions given in the prompt to complete the creation of the wedding.
   - Each wedding must have exactly one bride and one groom.
   - Use `t/bride` to designate a person as the bride.
   - Use `t/groom` to designate a person as the groom.
-  - Other people added without these special tags will be considered as wedding party members.
 - See [Adding a person to a wedding](#adding-a-person-to-a-wedding-add) for more details.
 - You cannot add a wedding with the exact same `WEDDING_NAME` and `DATE` as one that already exists.
+</box>
+
+<box type="info">
+
+**You will not be able to issue other commands while in the process of creating a wedding**<br>
+To cancel creating the wedding, type `n`. To exit the app, type `exit`.
+
 </box>
 
 <box type="info">
@@ -140,13 +178,13 @@ Note:
 - Should not be blank.
 - Should be case-sensitive.
 - Can contain any amount of alphanumeric characters, spaces, and special characters.
-- May not include bride and groom's name.
+- Does not have to match the name of the bride and groom. You can name your wedding to what you see fit.
 
 **Dates:**
 
 - The `DATE` Parameter has to be in the format `DDMMYYYY`.
   - e.g `25122025` for the 25th December 2025
-- Can be any date, past, present or future.
+- Can be any date, past, present or future. We allow past dates for cases such as keeping records on past wedding events.
 
 </box>
 

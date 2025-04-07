@@ -10,8 +10,8 @@ Class LogicManager
 }
 
 package Model as ModelPackage {
-Class "<<interface>>\nModel" as Model
-Class ModelManager
+Class "<<interface>>\nWeddingModel" as Model
+Class WeddingModelManager
 }
 
 package Storage as StoragePackage {
@@ -23,7 +23,7 @@ Class HiddenOutside #FFFFFF
 HiddenOutside ..> Logic
 
 LogicManager .up.|> Logic
-ModelManager .up.|> Model
+WeddingModelManager .up.|> Model
 StorageManager .up.|> Storage
 
 LogicManager --> Model
