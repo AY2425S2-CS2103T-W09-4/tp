@@ -18,6 +18,8 @@ public class CommandResult {
 
     /** The application should exit. */
     private final boolean exit;
+    
+    private final Optional<Wedding> wedding;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
@@ -26,6 +28,17 @@ public class CommandResult {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+        this.wedding = Optional.empty();
+    }
+
+    /**
+     * Constructs a {@ CommandResult} containing the wedding to show
+     */
+    public CommandResult(String feedbackToUser, Wedding wedding) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.showHelp = showHelp;
+        this.exit = exit;
+        this.wedding = Optional.of(wedding);
     }
 
     /**
@@ -46,6 +59,10 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
+    }
+
+    public Optional<Wedding> getSelectedWedding() {
+        return wedding;
     }
 
     @Override

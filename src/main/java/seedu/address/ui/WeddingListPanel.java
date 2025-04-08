@@ -43,4 +43,11 @@ public class WeddingListPanel extends UiPart<Region> {
             }
         }
     }
+
+    /*
+     * Highlights the person
+     */
+    public void selectWedding(Wedding wedding) {
+        weddingListView.getSelectionModel().select(wedding);
+    }
 }
