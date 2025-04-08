@@ -150,7 +150,7 @@ Note:
 
 </box>
 
-### Opening a wedding : `open`
+### Opening a wedding: `open`
 
 You can open a wedding from the Wedding Planner to view its people and edit its people.
 
