@@ -579,3 +579,7 @@ This team consists of 5 members.
 5. **Warn on duplicate info**
 
     Currently, the `new` command allows weddings with the same name, but different date to be added, as well as weddings with the same name, with varying amount of spaces. We plan to display a warning if similar duplicates are found, so that users can notice and correct the errors if unintended.
+
+6. **More flexible names**
+
+    Currently, the `NAME` field does not support some common characters such as `/`. We plan to add support for these characters in the future.
