@@ -352,7 +352,7 @@ Examples:
 - `find Sun Hrishi`
 - `find sun timo`
 
-<box type="info" seamless>
+<box type="info">
 
 ++**Note:**++
 
