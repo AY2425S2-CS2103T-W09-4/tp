@@ -87,6 +87,9 @@ Wedding planning can get hectic, especially for a busy planner like you, and wit
 - Words in `UPPER_CASE` are the parameters to be supplied by you, the user.
   - e.g. in `new n/WEDDING_NAME`, you should replace `WEDDING_NAME` with the actual name, like `new n/John & Mary`
 
+- For commands requiring an `INDEX` (such as `open` or `delete`), all inputs must be a valid positive integer passed to the `INDEX` field.
+  - If an invalid `INDEX` is passed (such as if the `INDEX` is larger than the number of weddings), an error message will be displayed.
+
 - Items in square brackets are optional.
   - e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or simply as `n/John Doe`.
 
@@ -199,7 +202,8 @@ Examples:
 - `open 1` (Opens the first wedding in the list)
 - `open 3` (Opens the third wedding in the list)
 
-After a weddings is open, you will be able to see the people belongs to it on the right:
+After a wedding is open, the members belonging to that wedding will be displayed on the right pane as shown below. You can then
+proceed to perform further operations like adding members or editing members.:
 
 ![An open wedding](images/openWedding.png)
 
@@ -236,7 +240,7 @@ Examples:
 Note:
 
 - You can delete any wedding (even the open one) regardless if there is a wedding open or not.
-- When deleting the open wedding, you will still be able to run commands on it. However, no data will be saved.
+- If an open wedding is deleted, you will still be able to run commands on the open wedding. However, no data will be saved.
 
 </box>
 
@@ -256,6 +260,12 @@ Note:
 
 </box>
 
+<box type="tip">
+
+**Tip:** You can use `clear` to set up a fresh wedding planner if you don't want the sample data.
+
+</box>
+
 [Back to Table of Contents](#table-of-contents)
 
 ## People Management
@@ -264,6 +274,7 @@ Note:
 
 You can add a person to the [opened](#opening-a-wedding--open) Wedding Planner.
 You can use tags to specify if the person is a bride, groom, or other wedding party participant.
+The new person will be displayed on the right pane of the GUI.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
@@ -272,6 +283,9 @@ Examples:
 - `add n/Mary Muller p/98765432 e/mary@example.com a/123 Kentridgr St t/bride`
 - `add n/John Danny p/89989788 e/john@example.com a/456 UTR Ave t/groom`
 - `add n/Harry Kane p/13701978 e/kane@example.com a/789 NUS Rd t/bridesmaid`
+- `add n/Alan Wayne p/98775633 e/alan@example.com a/123 Clementi Rd t/photographer`
+
+![Add Command](images/addCommand.png)
 
 <box type="info">
 
@@ -280,7 +294,7 @@ Examples:
 **Names:**
 - Should not be blank.
 - Can be any length.
-- Can only contain alphanumeric characters, spaces and limited special characters(, ' . -)
+- Can only contain alphanumeric characters, spaces and limited special characters(`,` or `'` or `.` or `-`)
 - Can not start with the special character.
 - Should not be identical to any person already in the wedding.
   - e.g. If a person with the name of "Ma Dong-Seok" already exists in the wedding,
@@ -304,6 +318,11 @@ Examples:
   - Be at least 2 characters long.
   - Should start and end with alphanumeric characters.
   - Should consist only of alphanumeric characters, separated only by hyphens, if any.
+- Examples of valid emails:
+  - `admin@localhost`
+  - `e1234567@u.nus.edu`
+  - `chae-won@gmail.com`
+  - `fong_hrishi@out-look.com`
 
 **Addresses:**
 
@@ -313,7 +332,8 @@ Examples:
 **Tags:**
 - Should consist only alphanumeric characters, with no spaces
 - Should be case-sensitive: A tag "Brother" is considered different from "brother".
-  - The only exception to this are the `groom` and `bride` tags. <span title='Any variation of a word where the only difference is letter casing (e.g., "GROOM, "Groom", "gRoOm")'>Case-insensitive variations</span> of them will not be permitted if the wedding already has a person with that corresponding tag.
+  - The only exception to this are the `groom` and `bride` tags. These tags are case-insensitive.
+  - Different casing variations of them (e.g., "GROOM, "Groom", "gRoOm") will not be permitted if the wedding already has a person with that corresponding tag.
 - Only one person in each wedding may have the `groom` and `bride` tag, specified with `t/groom` and `t/bride` respectively.
   - However, a bride and groom may have other tags.
 - Can have any number of tags (including 0)
@@ -322,8 +342,7 @@ Examples:
 
 ### Finding people: `find`
 
-You can view all weddings with people that match the provided search terms, and HappyEverAfter will show the information of 
-all weddings with people that match any of the terms provided.
+You can search for all weddings that contain the names of people that match any one of the provided search terms.
 
 Format: `find [SEARCH TERMS]`
 
@@ -331,23 +350,27 @@ Examples:
 
 - `find Sun`
 - `find Sun Hrishi`
-- `find sun`
+- `find sun timo`
 
 <box type="info" seamless>
 
 ++**Note:**++
 
 - Search term should not be blank.
-- Search term may not be case-sensitive.
-- Can have any number of search terms.
+- Search terms are case-insensitive. Typing `find sun` will produce a match for a person named `SUN`
+- You can provide any number of search terms, separated by spaces.
+  - `find` will match names to at least one of the search terms. For instance, `find sun timo` will return results for both the person named `sun` and the person named `timo`.
+  - The ordering of the terms does not matter. For example, `find Zhe Hao` will return the same result as `find Hao Zhe`.
+- Names do not have to be an exact match for the search term. For example, `find timo` will result a result for a person named `timothy`
+  - However, the search term must be *continuous*. For example, if the person is named `timo`, `find tim` will return a result but `find tio` will not return a result.
 
 </box>
 
-<box type="tip" seamless>
+The result of the search will be outputted on the result box above the command input box. You can then use the `open` command to
+open a wedding based on the result. A sample output is shown below:
 
-**Tip:** You can use open command to view a specific wedding.
+![find command](images/findCommand.png)
 
-</box>
 
 ### Filtering by tag: `filter`
 
@@ -379,6 +402,7 @@ Examples:
 
 You can remove a person from the currently [opened](#opening-a-wedding--open) wedding based on the provided index.
 The index refers to the index number shown in the displayed list. The index **must be a positive integer**.
+The active wedding pane will be automatically updated with the new list of members
 
 Format: `remove INDEX`
 
@@ -386,11 +410,17 @@ Example:
 
 - `remove 3` (Removes the third person in the list)
 
+In the example usage below, issuing `remove 3` will remove the person named `timo` from the active wedding.
+![remove_one](images/removeCommand1.png)
+
+After removing:<br>
+![remove_two](images/removeCommand2.png)
+
 <box type="info" seamless>
 
 ++**Note:**++
 
-- You cannot remove a bride or groom from a wedding. Every wedding must maintain both roles.
+- You cannot remove a bride or groom from a wedding. Every wedding must have both roles.
 
 </box>
 
@@ -402,8 +432,8 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
 
 Examples:
 
-- `edit 1 p/91234567 e/newemail@example.com` (Updates phone and email of the first person)
-- `edit 2 n/New Name a/New Address` (Updates name and address of the second person)
+- `edit 1 p/91234567 e/newemail@example.com` will update the `phone` and `email` of the person at index `1` to be `91234567` and `newemail@example.com` respectively.
+- `edit 2 n/New Name a/New Address` will update the `name` and `address` of the person at index `2` to be `New Name` and `New Address` respectively.
 
 <box type="info">
 
@@ -411,19 +441,18 @@ Examples:
 
  - You cannot edit the `bride/groom` tags of a person.
  - At least one field must be provided for editing.
- - When editing tags, the existing tags of the person will be removed.
+ - When editing tags, the *existing* tags of the person will be removed.
   - e.g. if the person already has the tag `Brother`, and you want to add a new tag `Coming`, you will have to run the command `edit INDEX t/Brother t/Coming`.
   - If you want to remove all tags from a person, you can enter `t/` with no tags behind. This will remove all tags from the person at the specified index.
 
 **Restrictions on Parameters:**
-
 
 - See **Restrictions on Parameters** in the [add command](#adding-a-person-to-a-wedding-add) for more details.
 </box>
 
 <box type="tip">
 
-**Tip:** If you need to change the bride or groom of a wedding, use the edit commands to change their information instead of altering the tags of another person to make them bride/groom.
+**Tip:** If you need to change the bride or groom of a wedding, use `edit` to change their information instead of editing the tag of another person to make them bride/groom.
 
 </box>
 
