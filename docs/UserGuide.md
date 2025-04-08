@@ -240,7 +240,7 @@ Examples:
 Note:
 
 - You can delete any wedding (even the open one) regardless if there is a wedding open or not.
-- If an open wedding is deleted, you will still be able to run commands on the open wedding. However, no data will be saved.
+- When deleting the open wedding, it will close it on the right pane accordingly.
 
 </box>
 
