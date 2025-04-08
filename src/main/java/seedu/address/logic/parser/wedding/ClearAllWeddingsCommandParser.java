@@ -1,8 +1,6 @@
 package seedu.address.logic.parser.wedding;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
-import seedu.address.logic.commands.YCommand;
 import seedu.address.logic.commands.wedding.ClearAllWeddingsCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
