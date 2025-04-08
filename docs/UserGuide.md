@@ -78,7 +78,8 @@ Wedding planning can get hectic, especially for a busy planner like you, and wit
 ## Feature-Preface
 
 <box type="info">
-### Some things you need to know about the features before getting started:
+
+++**Some things you need to know about the features before getting started:**++
 
 - Commands are case-insensitive.
   - e.g. `Help` and `help` will run the same command.
@@ -165,7 +166,7 @@ Note:
 - You cannot add a wedding with the exact same `WEDDING_NAME` and `DATE` as one that already exists.
 </box>
 
-<box type="info">
+<box type="warning">
 
 **You will not be able to issue other commands while in the process of creating a wedding**<br>
 To cancel creating the wedding, type `n`. To exit the app, type `exit`.
@@ -257,6 +258,7 @@ Note:
 
 - To prevent accidental deletions, there will be a secondary confirmation prompt issued after `clear` to
   confirm the deletion.
+- If you issue another command before issuing either the `y` or `n` command, the clearing will be automatically aborted.
 
 </box>
 
@@ -280,7 +282,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
 Examples:
 
-- `add n/Mary Muller p/98765432 e/mary@example.com a/123 Kentridgr St t/bride`
+- `add n/Mary Muller p/98765432 e/mary@example.com a/123 Kent Ridge St t/bride`
 - `add n/John Danny p/89989788 e/john@example.com a/456 UTR Ave t/groom`
 - `add n/Harry Kane p/13701978 e/kane@example.com a/789 NUS Rd t/bridesmaid`
 - `add n/Alan Wayne p/98775633 e/alan@example.com a/123 Clementi Rd t/photographer`
@@ -331,7 +333,7 @@ Examples:
 
 **Tags:**
 - Should consist only alphanumeric characters, with no spaces
-- Should be case-sensitive: A tag "Brother" is considered different from "brother".
+- Are case-sensitive: A tag "Brother" is considered different from "brother".
   - The only exception to this are the `groom` and `bride` tags. These tags are case-insensitive.
   - Different casing variations of them (e.g., "GROOM, "Groom", "gRoOm") will not be permitted if the wedding already has a person with that corresponding tag.
 - Only one person in each wedding may have the `groom` and `bride` tag, specified with `t/groom` and `t/bride` respectively.
