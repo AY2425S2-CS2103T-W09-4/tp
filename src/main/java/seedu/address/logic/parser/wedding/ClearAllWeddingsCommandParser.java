@@ -1,8 +1,6 @@
 package seedu.address.logic.parser.wedding;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
-import seedu.address.logic.commands.YCommand;
 import seedu.address.logic.commands.wedding.ClearAllWeddingsCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -17,11 +15,6 @@ public class ClearAllWeddingsCommandParser implements Parser<ClearAllWeddingsCom
      * @throws ParseException if any arguments are provided (command does not take any arguments)
      */
     public ClearAllWeddingsCommand parse(String args) throws ParseException {
-        String trimArgs = args.trim();
-        if (!trimArgs.isEmpty()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, YCommand.MESSAGE_USAGE));
-        }
         return new ClearAllWeddingsCommand();
     };
 }

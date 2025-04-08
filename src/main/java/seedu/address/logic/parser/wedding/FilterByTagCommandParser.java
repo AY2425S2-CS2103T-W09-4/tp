@@ -1,18 +1,19 @@
 package seedu.address.logic.parser.wedding;
 
+import java.util.Arrays;
+import java.util.List;
+
 import seedu.address.logic.commands.wedding.FilterByTagCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.PersonContainsTagPredicate;
-
+import seedu.address.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new FilterByTagCommand object
  */
 public class FilterByTagCommandParser implements Parser<FilterByTagCommand> {
 
-    public static final String TOO_MANY_TAGS_MESSAGE = "The filter command only accepts a single tag. "
-            + "Please provide exactly one tag.";
 
     /**
      * Parses the given {@code String} of arguments in the context of the FilterByTagCommand
@@ -22,17 +23,18 @@ public class FilterByTagCommandParser implements Parser<FilterByTagCommand> {
     public FilterByTagCommand parse(String args) throws ParseException {
         String trimArgs = args.trim();
 
-        // Check if there are multiple words (tags) by splitting by whitespace
-        String[] words = trimArgs.split("\\s+");
-        if (words.length > 1) {
-            throw new ParseException(TOO_MANY_TAGS_MESSAGE);
-        }
-
 
         if (trimArgs.isEmpty()) {
             return new FilterByTagCommand();
         } else {
-            return new FilterByTagCommand(new PersonContainsTagPredicate(trimArgs));
+            List<String> tagKeywords = Arrays.asList(trimArgs.split("\\s+"));
+            // Check validity of tag
+            for (String tag : tagKeywords) {
+                if (!Tag.isValidTagName(tag)) {
+                    throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
+                }
+            }
+            return new FilterByTagCommand(new PersonContainsTagPredicate(tagKeywords));
         }
     }
 }
