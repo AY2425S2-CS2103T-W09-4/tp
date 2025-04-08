@@ -18,22 +18,22 @@ Wedding planning can get hectic, especially for a busy planner like you, and wit
 3. [GUI Overview](#gui-overview)
 4. [Features](#features)
     - [Wedding Management](#wedding-management)
-        - [Creating a new wedding](#creating-a-wedding-new)
-        - [Opening a wedding](#opening-a-wedding-open)
-        - [Closing a wedding](#closing-the-current-wedding-close)
-        - [Listing all weddings](#listing-all-weddings-list)
-        - [Sorting weddings by date](#sorting-weddings-by-date-sort)
-        - [Deleting a wedding](#deleting-a-wedding-delete)
-        - [Deleting all weddings](#clearing-all-weddings-clear)
-    - [Member Management](#member-management)
-        - [Adding a person to a wedding](#adding-a-person-to-a-wedding-add)
-        - [Finding people of weddings](#finding-people-find)
-        - [Filtering for people by tags](#filtering-by-tag-filter)
-        - [Removing a person](#removing-a-person-remove)
-        - [Editing a person](#editing-a-person-edit)
+        - [Listing all weddings: `list`](#listing-all-weddings-list)
+        - [Creating a new wedding: `new`](#creating-a-wedding-new)
+        - [Opening a wedding: `open`](#opening-a-wedding-open)
+        - [Closing a wedding: `close`](#closing-the-current-wedding-close)
+        - [Sorting weddings by date: `sort`](#sorting-weddings-by-date-sort)
+        - [Deleting a wedding; `delete`](#deleting-a-wedding-delete)
+        - [Clearing all weddings: `clear`](#clearing-all-weddings-clear)
+    - [Person Management](#person-management)
+        - [Adding a person to a wedding: `add`](#adding-a-person-to-a-wedding-add)
+        - [Finding people of weddings: `find`](#finding-people-find)
+        - [Filtering for people by tags: `filter`](#filtering-by-tag-filter)
+        - [Removing a person: `remove`](#removing-a-person-remove)
+        - [Editing a person: `edit`](#editing-a-person-edit)
     - [System Commands](#system-commands)
-        - [Viewing help](#viewing-help--help)
-        - [Exiting the program](#exiting-the-program-exit)
+        - [Viewing help: `help`](#viewing-help-help)
+        - [Exiting the program: `exit`](#exiting-the-program-exit)
 5. [Data Storage](#data-storage)
 6. [FAQ](#faq)
 7. [Command Summary](#command-summary)
@@ -78,7 +78,8 @@ Wedding planning can get hectic, especially for a busy planner like you, and wit
 ## Feature-Preface
 
 <box type="info">
-### Some things you need to know about the features before getting started:
+
+++**Some things you need to know about the features before getting started:**++
 
 - Commands are case-insensitive.
   - e.g. `Help` and `help` will run the same command.
@@ -165,7 +166,7 @@ Note:
 - You cannot add a wedding with the exact same `WEDDING_NAME` and `DATE` as one that already exists.
 </box>
 
-<box type="info">
+<box type="warning">
 
 **You will not be able to issue other commands while in the process of creating a wedding**<br>
 To cancel creating the wedding, type `n`. To exit the app, type `exit`.
@@ -199,8 +200,8 @@ Format: `open INDEX`
 
 Examples:
 
-- `open 1` (Opens the first wedding in the list)
-- `open 3` (Opens the third wedding in the list)
+- `open 1` : Opens the first wedding in the list
+- `open 3` : Opens the third wedding in the list
 
 After a wedding is open, the members belonging to that wedding will be displayed on the right pane as shown below. You can then
 proceed to perform further operations like adding members or editing members.:
@@ -233,8 +234,8 @@ Format: `delete INDEX`
 
 Examples:
 
-- `delete 1` (Deletes the first wedding in the list)
-- `delete 3` (Deletes the third wedding in the list)
+- `delete 1` : Deletes the first wedding in the list)
+- `delete 3` : Deletes the third wedding in the list)
 
 <box type="info">
 Note:
@@ -257,6 +258,7 @@ Note:
 
 - To prevent accidental deletions, there will be a secondary confirmation prompt issued after `clear` to
   confirm the deletion.
+- If you issue another command before issuing either the `y` or `n` command, the clearing will be automatically aborted.
 
 </box>
 
@@ -268,7 +270,7 @@ Note:
 
 [Back to Table of Contents](#table-of-contents)
 
-## People Management
+## Person Management
 
 ### Adding a person to a wedding: `add`
 
@@ -280,7 +282,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
 
 Examples:
 
-- `add n/Mary Muller p/98765432 e/mary@example.com a/123 Kentridgr St t/bride`
+- `add n/Mary Muller p/98765432 e/mary@example.com a/123 Kent Ridge St t/bride`
 - `add n/John Danny p/89989788 e/john@example.com a/456 UTR Ave t/groom`
 - `add n/Harry Kane p/13701978 e/kane@example.com a/789 NUS Rd t/bridesmaid`
 - `add n/Alan Wayne p/98775633 e/alan@example.com a/123 Clementi Rd t/photographer`
@@ -331,7 +333,7 @@ Examples:
 
 **Tags:**
 - Should consist only alphanumeric characters, with no spaces
-- Should be case-sensitive: A tag "Brother" is considered different from "brother".
+- Are case-sensitive: A tag "Brother" is considered different from "brother".
   - The only exception to this are the `groom` and `bride` tags. These tags are case-insensitive.
   - Different casing variations of them (e.g., "GROOM, "Groom", "gRoOm") will not be permitted if the wedding already has a person with that corresponding tag.
 - Only one person in each wedding may have the `groom` and `bride` tag, specified with `t/groom` and `t/bride` respectively.
@@ -374,7 +376,7 @@ open a wedding based on the result. A sample output is shown below:
 
 ### Filtering by tag: `filter`
 
-You can filter the list of the currently [opened](#opening-a-wedding--open) wedding to display all people that match at least one of the tags.
+You can filter the list of the currently [opened](#opening-a-wedding-open) wedding to display all people that match at least one of the tags.
 
 Format: `filter [TAG]…​`
 
@@ -415,7 +417,7 @@ Format: `remove INDEX`
 
 Example:
 
-- `remove 3` (Removes the third person in the list)
+- `remove 3` : Removes the third person in the list
 
 In the example usage below, issuing `remove 3` will remove the person named `timo` from the active wedding.
 ![remove_one](images/removeCommand1.png)
@@ -467,7 +469,7 @@ Examples:
 
 ## System commands
 
-### Viewing help : `help`
+### Viewing help: `help`
 
 You can view a message providing a web link to access the User Guide.
 
