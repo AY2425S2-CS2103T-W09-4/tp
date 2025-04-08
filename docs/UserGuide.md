@@ -14,12 +14,12 @@ Wedding planning can get hectic, especially for a busy planner like you, and wit
 ## Table of Contents
 
 1. [Quick Start](#quick-start)
-2. [Feature Preface](#feature-details)
+2. [Feature Preface](#feature-preface)
 3. [GUI Overview](#gui-overview)
 4. [Features](#features)
     - [Wedding Management](#wedding-management)
         - [Creating a new wedding](#creating-a-wedding-new)
-        - [Opening a wedding](#opening-a-wedding--open)
+        - [Opening a wedding](#opening-a-wedding-open)
         - [Closing a wedding](#closing-the-current-wedding-close)
         - [Listing all weddings](#listing-all-weddings-list)
         - [Sorting weddings by date](#sorting-weddings-by-date-sort)
@@ -191,7 +191,7 @@ To cancel creating the wedding, type `n`. To exit the app, type `exit`.
 
 </box>
 
-### Opening a wedding : `open`
+### Opening a wedding: `open`
 
 You can open a wedding from the Wedding Planner to view its people and edit its people.
 
@@ -272,7 +272,7 @@ Note:
 
 ### Adding a person to a wedding: `add`
 
-You can add a person to the [opened](#opening-a-wedding--open) Wedding Planner.
+You can add a person to the [opened](#opening-a-wedding-open) Wedding Planner.
 You can use tags to specify if the person is a bride, groom, or other wedding party participant.
 The new person will be displayed on the right pane of the GUI.
 
@@ -344,7 +344,7 @@ Examples:
 
 You can search for all weddings that contain the names of people that match any one of the provided search terms.
 
-Format: `find [SEARCH TERMS]`
+Format: `find [NAME]…​`
 
 Examples:
 
@@ -356,7 +356,7 @@ Examples:
 
 ++**Note:**++
 
-- Search term should not be blank.
+- Search term should not be blank or consist only of spaces. For examples, `find    ` will be counted as an invalid command.
 - Search terms are case-insensitive. Typing `find sun` will produce a match for a person named `SUN`
 - You can provide any number of search terms, separated by spaces.
   - `find` will match names to at least one of the search terms. For instance, `find sun timo` will return results for both the person named `sun` and the person named `timo`.
@@ -374,33 +374,40 @@ open a wedding based on the result. A sample output is shown below:
 
 ### Filtering by tag: `filter`
 
-You can filter the list of the currently [opened](#opening-a-wedding--open) wedding to display all people with the specified tag.
+You can filter the list of the currently [opened](#opening-a-wedding--open) wedding to display all people that match at least one of the tags.
 
-Format: `filter [TAGS]`
+Format: `filter [TAG]…​`
 
 Examples:
 
-- `filter bride` (Displays only the bride)
-- `filter groom` (Displays only the groom)
-- `filter` (Displays all people without filtering)
+- `filter bride` : Displays only the bride
+- `filter groom` : Displays only the groom
+- `filter` : Displays all people without filtering
+- `filter photographer caterer guest` : Displays all people that has at least one of the tags. For example, if Person 1 has the `photographer` tag and Person 2 has the `guest` tag, both Person 1 and Person 2 will be displayed in the filtered result.
 
-<box type="info" seamless>
+<box type="info">
 
 ++**Note:**++
 
 - Tags are case-sensitive.
+- Tags can only be alphanumeric characters.
+- Tag matching is done on an individual basis.
+  - For example, `filter photographer guest` will match all people that have either `photographer` or `guest` tag or both tags. The person does not need to have the exact same tags as all the tags specified in the filter command.
+  - Similarly, `filter photographer` will match a person that has both the tags `photographer` and `guest`. The filter command does not have to contain all tags for the person; it only has to match at least one.
+- Tag matching is done on a complete string comparison basis.
+  - For example, `filter pho` will not match a person with the tag `photographer`. The individual tag string must be an exact match.
 
 </box>
 
 <box type="tip">
 
-**Tip:** If you want to remove the filters, use the filter command with no tags, i.e. `filter`
+**Tip:** If you want to clear the filters, use the filter command with no tags, i.e. `filter`
 
 </box>
 
 ### Removing a person: `remove`
 
-You can remove a person from the currently [opened](#opening-a-wedding--open) wedding based on the provided index.
+You can remove a person from the currently [opened](#opening-a-wedding-open) wedding based on the provided index.
 The index refers to the index number shown in the displayed list. The index **must be a positive integer**.
 The active wedding pane will be automatically updated with the new list of members
 
@@ -416,7 +423,7 @@ In the example usage below, issuing `remove 3` will remove the person named `tim
 After removing:<br>
 ![remove_two](images/removeCommand2.png)
 
-<box type="info" seamless>
+<box type="info">
 
 ++**Note:**++
 
@@ -426,7 +433,7 @@ After removing:<br>
 
 ### Editing a person: `edit`
 
-You can edit the details of a person in the currently [opened](#opening-a-wedding--open) wedding.
+You can edit the details of a person in the currently [opened](#opening-a-wedding-open) wedding.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
 
@@ -462,7 +469,7 @@ Examples:
 
 ### Viewing help : `help`
 
-You can view a message explaining how to access the User Guide.
+You can view a message providing a web link to access the User Guide.
 
 ![help message](images/helpMessage.png)
 
@@ -485,14 +492,14 @@ is no need to save manually.
 
 ### Editing the data file
 
-HappyEverAfter data is saved automatically as a JSON file `[JAR file location]/data/weddingplanner.json`.
-Advanced users are welcome to update data directly by editing that data file.
+HappyEverAfter data is saved locally as a JSON file in `[JAR file location]/data/weddingplanner.json`.
+Advanced users are welcome to update the data directly by editing that data file.
 
 <box type="warning">
 
 **Caution:**
 If your changes to the data file makes its format invalid, HappyEverAfter will discard all data and start
-with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+with an empty data file at the next run.  Hence, it is recommended to make a backup of the file before editing it.<br>
 Furthermore, certain edits can cause HappyEverAfter to behave in unexpected ways (e.g., if a value entered is
 outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 
@@ -505,7 +512,7 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 ## FAQ
 
 **Q**: How do I transfer my wedding planner data to another computer?\
-**A**: Install HappyEverAfter on the other computer and replace the empty data file it creates with the file from your original installation (located at `/data/weddingplanner.json`).
+**A**: Install HappyEverAfter on the other computer and replace the data file it creates with the file from your original installation (located at `/data/weddingplanner.json`).
 
 **Q**: Can I add multiple weddings at once?\
 **A**: No, you need to create weddings one at a time using the `new` command. Alternatively, for advanced users: you may update the data file yourself. Look through the ["Editing the data file" section](#editing-the-data-file) for more support.
@@ -513,8 +520,14 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 **Q**: What happens if I try to add a second bride or groom to a wedding?\
 **A**: The system will display an error message as the current implementation of HappyEverAfter supports only one bride and one groom per wedding.
 
+**Q**: How many weddings can I have in HappyEverAfter?\
+**A**: There is no limit to how many weddings can be added. However, we would advise you to keep it under a reasonable amount (such as `100`) as many weddings may lead to performance loss.
+
 **Q**: How many people can I add to a wedding?\
 **A**: As of the most recent version, you can add at most 100 people for one wedding.
+
+**Q**: Can I add international phone numbers?\
+**A**: Unfortunately, international phone numbers will only be implemented in future. However, HappyEverAfter supports variable length numbers for phone numbers. One possible option would be to use a custom combination of numbers to denote the `+` symbol such as `000`.
 
 **Q**: I renamed the bride and groom of a wedding. How do I change the wedding name?\
 **A**: The system currently does not support the editing of wedding names directly. However, you may update the data file yourself. Look through the ["Editing the data file" section](#editing-the-data-file) for more support.
@@ -534,8 +547,8 @@ outside the acceptable range). Therefore, edit the data file only if you are con
 | **Delete Wedding**        | `delete INDEX`<br>e.g., `delete 2`                                                                                                   |
 | **Clear All Weddings**    | `clear`                                                                                                                              |
 | **Add Person**            | `add n/NAME p/PHONE e/EMAIL a/ADDRESS [t/TAG]...`<br>e.g., `add n/Mary Smith p/98765432 e/mary@example.com a/123 Wedding St t/bride` |
-| **Find Person**           | `find [SEARCH TERMS]`<br>e.g., `find John Doe`                                                                                       |
-| **Filter People by Tag**  | `filter [TAG]`<br>e.g., `filter groom`                                                                                               |
+| **Find Person**           | `find [SEARCH TERMS...]`<br>e.g., `find John Doe`                                                                                    |
+| **Filter People by Tag**  | `filter [TAGS...]`<br>e.g., `filter groom bride`                                                                                     |
 | **Remove Person**         | `remove INDEX`<br>e.g., `remove 3`                                                                                                   |
 | **Edit Person**           | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`<br>e.g., `edit 1 p/91234567 e/newemail@example.com`                 |
 | **Help**                  | `help`                                                                                                                               |P
