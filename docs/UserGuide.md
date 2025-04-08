@@ -200,8 +200,8 @@ Format: `open INDEX`
 
 Examples:
 
-- `open 1` (Opens the first wedding in the list)
-- `open 3` (Opens the third wedding in the list)
+- `open 1` : Opens the first wedding in the list
+- `open 3` : Opens the third wedding in the list
 
 After a wedding is open, the members belonging to that wedding will be displayed on the right pane as shown below. You can then
 proceed to perform further operations like adding members or editing members.:
@@ -234,8 +234,8 @@ Format: `delete INDEX`
 
 Examples:
 
-- `delete 1` (Deletes the first wedding in the list)
-- `delete 3` (Deletes the third wedding in the list)
+- `delete 1` : Deletes the first wedding in the list)
+- `delete 3` : Deletes the third wedding in the list)
 
 <box type="info">
 Note:
@@ -417,7 +417,7 @@ Format: `remove INDEX`
 
 Example:
 
-- `remove 3` (Removes the third person in the list)
+- `remove 3` : Removes the third person in the list
 
 In the example usage below, issuing `remove 3` will remove the person named `timo` from the active wedding.
 ![remove_one](images/removeCommand1.png)
