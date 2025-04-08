@@ -13,7 +13,7 @@ import seedu.address.model.person.PersonContainsTagPredicate;
 import seedu.address.model.wedding.Wedding;
 
 /**
- * Finds all persons in a wedding with the specified tag and displays them. The tag string must be an exact match
+ * Finds all persons in a wedding with the specified tags and displays them. The tag string must be an exact match
  * (case-sensitive)
  */
 public class FilterByTagCommand extends Command {
