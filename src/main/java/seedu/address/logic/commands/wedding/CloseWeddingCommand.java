@@ -26,6 +26,6 @@ public class CloseWeddingCommand extends Command {
         }
 
         model.clearCurrentWedding();
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, true);
     }
 }
