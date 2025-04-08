@@ -28,6 +28,11 @@ public class WeddingListPanel extends UiPart<Region> {
         super(FXML);
         weddingListView.setItems(weddingList);
         weddingListView.setCellFactory(listView -> new WeddingListViewCell());
+        weddingListView.setMouseTransparent(true);
+    }
+
+    public ListView<Wedding> getListView() {
+        return this.weddingListView;
     }
 
     class WeddingListViewCell extends ListCell<Wedding> {
@@ -42,5 +47,15 @@ public class WeddingListPanel extends UiPart<Region> {
                 setGraphic(new WeddingCard(wedding, getIndex() + 1).getRoot());
             }
         }
+    }
+
+    /**
+     * Selects the specified wedding in the wedding list view.
+     *
+     * @param wedding The wedding to be selected.
+     */
+    public void selectWedding(Wedding wedding) {
+        weddingListView.getSelectionModel().select(wedding);
+        logger.fine("Selected wedding: " + wedding);
     }
 }

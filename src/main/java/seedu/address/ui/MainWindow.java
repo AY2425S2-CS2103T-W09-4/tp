@@ -129,6 +129,11 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        weddingListPanel.getListView().getSelectionModel()
+                .selectedItemProperty()
+                .addListener((observable, oldWedding, newWedding) ->
+                        weddingListPanel.selectWedding(newWedding));
     }
 
     /**
@@ -197,6 +202,16 @@ public class MainWindow extends UiPart<Stage> {
             if (commandResult.isExit()) {
                 handleExit();
             }
+
+            if (commandResult.isClearDisplay()) {
+                weddingListPanel.getListView().getSelectionModel().clearSelection();
+            }
+
+            commandResult.getSelectedWedding().ifPresent(
+                wedding -> {
+                    weddingListPanel.selectWedding(wedding);
+                }
+            );
 
             return commandResult;
         } catch (CommandException | ParseException e) {

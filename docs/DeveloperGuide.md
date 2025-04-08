@@ -6,14 +6,45 @@
 
 # HappyEverAfter Developer Guide
 
-<!-- * Table of Contents -->
+## Table of Contents
+- [HappyEverAfter Developer Guide](#happyeverafter-developer-guide)
+  - [Table of Contents](#table-of-contents)
+  - [**Acknowledgements**](#acknowledgements)
+  - [**Setting up, getting started**](#setting-up-getting-started)
+  - [**Design**](#design)
+    - [Architecture](#architecture)
+    - [UI component](#ui-component)
+    - [Logic component](#logic-component)
+    - [WeddingModel component](#weddingmodel-component)
+      - [Key Model Classes](#key-model-classes)
+    - [Storage component](#storage-component)
+    - [Common classes](#common-classes)
+  - [**Documentation, logging, testing, configuration, dev-ops**](#documentation-logging-testing-configuration-dev-ops)
+  - [**Appendix: Requirements**](#appendix-requirements)
+    - [Product scope](#product-scope)
+    - [User stories](#user-stories)
+    - [Use cases](#use-cases)
+    - [Non-Functional Requirements](#non-functional-requirements)
+    - [Glossary](#glossary)
+  - [**Appendix: Instructions for Manual Testing**](#appendix-instructions-for-manual-testing)
+    - [Launch and Shutdown](#launch-and-shutdown)
+    - [Adding a Wedding](#adding-a-wedding)
+    - [Managing Weddings](#managing-weddings)
+    - [Managing Members](#managing-members)
+    - [Saving Data](#saving-data)
+  - [**Appendix: Planned enhancements**](#appendix-planned-enhancements)
+
+
 <page-nav-print />
 
 ---
 
 ## **Acknowledgements**
 
-_{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
+Libraries used: [Checkstyle](https://github.com/checkstyle/checkstyle), [JUnit](https://github.com/junit-team/junit5), [JavaFX](https://openjfx.io/)
+References used: [SE-EDU initiative](https://se-education.org/), [AB3](https://github.com/se-edu/addressbook-level3)
+
+Special thanks to our tutor, [Kim Hyeongcheol](linkedin.com/in/hyeongcheol-kim-76043844)
 
 ---
 
@@ -44,7 +75,7 @@ The bulk of the app's work is done by the following four components:
 
 - [**`UI`**](#ui-component): The UI of the App.
 - [**`Logic`**](#logic-component): The command executor.
-- [**`WeddingModel`**](#model-component): Holds the data of the App in memory.
+- [**`WeddingModel`**](#weddingmodel-component): Holds the data of the App in memory.
 - [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
@@ -72,7 +103,7 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/AY2
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `WeddingListPanel` `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
 The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2425S2-CS2103T-W09-4/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2425S2-CS2103T-W09-4/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
@@ -83,7 +114,7 @@ The `UI` component,
 - In particular, it listens for changes to the `UniqueWeddingList`, as well as the `UniquePersonList` of
     the currently open wedding.
 - keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-- depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+- depends on some classes in the `Model` component, as it displays `Wedding` objects residing in the `Model`, as well as the `Person` objects stored in the `Wedding as well`.
 
 ### Logic component
 
@@ -119,9 +150,11 @@ How the parsing works:
 - When called upon to parse a user command, the `WeddingPlannerParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddWeddingCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddWeddingCommand`) which the `WeddingPlannerParser` returns back as a `Command` object.
 - All `XYZCommandParser` classes (e.g., `AddWeddingCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
-### Model component
+### WeddingModel component
 
-**API** : [`WeddingModel.java`](https://github.com/AY2425S2-CS2103T-W09-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
+
+**API** : [`WeddingModel.java`](https://github.com/AY2425S2-CS2103T-W09-4/tp/blob/master/src/main/java/seedu/address/model/WeddingModel.java)
+
 
 <puml src="diagrams/ModelClassDiagram.puml" width="450" />
 
@@ -196,11 +229,13 @@ This section describes some noteworthy details on how certain features are imple
 
 **Target user profile**:
 
+
 - Has a need to manage a significant number of contacts over a variety of different weddings
 - Prefers desktop apps over other types
 - Can type fast
 - Prefers typing to mouse interactions
 - Is reasonably comfortable using CLI apps
+
 
 **Value proposition**: Allows the user to manage wedding tasks faster and more effectively than a typical mouse/GUI driven app or manually.
 
@@ -217,6 +252,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                       | close an open wedding                             | open a different wedding                                                  |
 | `* * *`  | user                                       | sort weddings by date                             | easily view upcoming weddings in chronological order and plan accordingly |
 | `* * *`  | user                                       | add a new person’s contact details to a wedding   | track attendees and their information                                     |
+| `* *`  | user | tag people with roles| associate certain contacts with their roles
 | `* *`    | user                                       | find a person by name                             | quickly locate their details                                              |
 | `*`      | user                                       | search using partial name matching                | find people even if I don’t remember their full name                      |
 | `* *`    | user                                       | filter search results by guests, staff, or couple | narrow down results                                                       |
@@ -337,55 +373,213 @@ _{More to be added}_
 
 ---
 
-## **Appendix: Instructions for manual testing**
+## **Appendix: Instructions for Manual Testing**
 
 Given below are instructions to test the app manually.
 
 <box type="info" seamless>
 
-**Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more _exploratory_ testing.
+**Note:** These instructions provide a starting point for testers; testers are expected to perform additional _exploratory_ testing.
 
 </box>
 
-### Launch and shutdown
+### Launch and Shutdown
 
-1. Initial launch
+1. **Initial Launch**
 
-    1. Download the jar file and copy into an empty folder
+    1. **Prerequisites**: Ensure that Java 17 or above is installed on your computer.
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    2. **Test Case**: Download the `happyeverafter.jar` file and place it in an empty folder.
 
-1. Saving window preferences
+        - **Execution**: Double-click the `happyeverafter.jar` file.
 
-    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+        - **Expected Outcome**: The GUI launches displaying a set of sample weddings. The window size may not be optimal.
 
-    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+2. **Saving Window Preferences**
 
-1. _{ more test cases …​ }_
+    1. **Test Case**: Resize the application window to an optimal size and move it to a preferred location. Close the application.
 
-### Adding a wedding
+        - **Execution**: Re-launch the application by double-clicking the `happyeverafter.jar` file.
 
-1. Adding a wedding to `HappyEverAfter`
+        - **Expected Outcome**: The application window retains the most recent size and location.
 
-    1. Prerequisites: Application must be open
+3. **Exiting the Application**
 
-    1. Test case: `new n/NAME d/09092027`<br>
-       Expected: The application will prompt addition of the contact details of bride and groom.
+    1. **Test Case**: Click the close button on the application window or enter the `exit` command in the command box.
 
-    1. Test case: `new NAME`<br>
-       Expected: No wedding is created. Error details shown in the status message. Status bar remains the same.
+        - **Expected Outcome**: The application shuts down gracefully without any error messages.
 
-    1. Other incorrect `new` commands to try: `new`, `new n/NAME d/DATE`, `...` (where DATE is not a recognised date format)<br>
-       Expected: Similar to previous.
+### Adding a Wedding
 
-1. _{ more test cases …​ }_
+1. **Adding a Wedding to HappyEverAfter**
 
-### Saving data
+    1. **Prerequisites**: The application must be running.
 
-1. Dealing with missing/corrupted data files
+    2. **Test Case**: Enter the command `new n/John & Mary d/09092027`.
 
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+        - **Expected Outcome**: A new wedding named "John & Mary" with the date 09 September 2027 is created. The application prompts for the contact details of the bride and groom.
 
-1. _{ more test cases …​ }_
+    3. **Test Case**: Enter the command `new n/John & Mary`.
+
+        - **Expected Outcome**: No wedding is created. An error message is displayed indicating the missing date parameter.
+
+    4. **Test Case**: Enter the command `new n/John & Mary d/31-02-2027`.
+
+        - **Expected Outcome**: No wedding is created. An error message is displayed indicating the invalid date format.
+
+    5. **Other Incorrect `new` Commands to Try**:
+
+        - `new`
+        - `new n/John & Mary d/`
+        - `new d/09092027`
+
+        - **Expected Outcome**: Similar to previous cases, no wedding is created, and appropriate error messages are displayed.
+
+### Managing Weddings
+
+1. **Listing All Weddings**
+
+    1. **Prerequisites**: At least one wedding has been added to the application.
+
+    2. **Test Case**: Enter the command `list`.
+
+        - **Expected Outcome**: A list of all weddings is displayed, showing their names and dates.
+
+2. **Sorting Weddings by Date**
+
+    1. **Prerequisites**: Multiple weddings with different dates have been added.
+
+    2. **Test Case**: Enter the command `sort`.
+
+        - **Expected Outcome**: The list of weddings is sorted in ascending order by date.
+
+3. **Deleting a Wedding**
+
+    1. **Prerequisites**: At least one wedding exists in the application.
+
+    2. **Test Case**: Enter the command `delete 1`.
+
+        - **Expected Outcome**: The first wedding in the list is deleted. The list updates to reflect the change.
+
+    3. **Test Case**: Enter the command `delete 0` or `delete` with an invalid index.
+
+        - **Expected Outcome**: No wedding is deleted. An error message is displayed indicating the invalid index.
+
+4. **Deleting All Weddings**
+
+    1. **Prerequisites**: Multiple weddings exist in the application.
+
+    2. **Test Case**: Enter the command `clear`.
+
+        - **Expected Outcome**: All weddings are deleted from the application. The list becomes empty.
+
+### Managing Members
+
+1. **Adding a Person to a Wedding**
+
+    1. **Prerequisites**: At least one wedding exists. The wedding is currently open in the application.
+
+    2. **Test Case**: Enter the command `add n/Emily Tan p/91234567 e/emily@example.com r/Bride`.
+        - **Expected Outcome**: A person named "Emily Tan" with the specified contact details and role "Bride" is added to the current wedding.
+
+    3. **Test Case**: Enter the command `add n/Emily Tan p/91234567 e/emily@example.com`.
+        - **Expected Outcome**: No person is added. An error message is displayed indicating the missing role parameter.
+
+    4. **Other Incorrect `add` Commands to Try**:
+        - `add n/Emily Tan e/emily@example.com r/Bride`
+        - `add p/91234567 e/emily@example.com r/Bride`
+        - `add n/Emily Tan p/91234567 r/Bride`
+
+        - **Expected Outcome**: Similar to previous cases, no person is added, and appropriate error messages are displayed.
+
+2. **Searching for Members of Weddings**
+    1. **Prerequisites**: Multiple members have been added to the current wedding.
+
+    2. **Test Case**: Enter the command `find Emily`.
+        - **Expected Outcome**: A list of members whose names contain "Emily" is displayed.
+
+    3. **Test Case**: Enter the command `find`.
+        - **Expected Outcome**: No members are displayed. An error message is shown indicating the missing search keyword.
+
+3. **Filtering Members by Tags**
+    1. **Prerequisites**: Members have been tagged with specific labels (e.g., "family", "friend").
+
+    2. **Test Case**: Enter the command `filter t/family`.
+        - **Expected Outcome**: A list of members tagged with "family" is displayed.
+
+    3. **Test Case**: Enter the command `filter t/unknown`.
+        - **Expected Outcome**: No members are displayed. A message indicates that no members have the specified tag.
+
+4. **Editing a Person**
+    1. **Prerequisites**: At least one member exists in the current wedding.
+
+    2. **Test Case**: Enter the command `edit 1 p/98765432`.
+        - **Expected Outcome**: The phone number of the first member in the list is updated to "98765432".
+
+    3. **Test Case**: Enter the command `edit 1`.
+        - **Expected Outcome**: No changes are made. An error message is displayed indicating the missing fields to edit.
+
+5. **Removing a Person**
+
+    1. **Prerequisites**: At least one member exists in the current wedding.
+
+    2. **Test Case**: Enter the command `remove 1`.
+        - **Expected Outcome**: The first member in the list is removed from the wedding.
+
+    3. **Test Case**: Enter the command `remove 0` or `remove` with an invalid index.
+        - **Expected Outcome**: No member is removed and an appropriate error message is displayed.
+ 
+### Saving Data
+
+1. **Dealing with Missing/Corrupted Data Files**
+
+    1. **Simulating a Missing Data File**:
+    
+        - **Execution**: Navigate to the application's data directory and delete the data file (i.e. data/weddingplanner.json).
+        
+        - **Test Case**: Launch the application after deleting the data file.
+            - **Expected Outcome**: The application starts with an sample list of weddings. A new data file by the same name is created upon exiting the application.
+
+    2. **Simulating a Corrupted Data File**:
+    
+        - **Execution**: Open the data file in a text editor and intentionally break its format (e.g., delete a brace, alter tags, insert random characters).
+        
+        - **Test Case**: Launch the application after corrupting the file.
+            - **Expected Outcome**: The application detects the corrupted file and logs that as the datafile could not be loaded, a new and empty file has been created. 
+            - User can then manually fix the crropted file or input their wedding details from scratch.
+
+2. **Verifying Data Persistence After Application Restart**
+
+    - **Prerequisites**: The application is running and at least one wedding has been added.
+
+    - **Test Case**: Close the application and re-launch it.
+        - **Expected Outcome**: All previously entered data (weddings, people, preferences) are correctly loaded and displayed.
+
+---
+
+## **Appendix: Planned enhancements**
+This team consists of 5 members.
+
+1. **Flexible Date Parsing**
+    
+    Currently, the `DATE` field required by the `new` command only accepts one date input format. In the future, more support for different date formats such as the ISO8601 standard (`2002-06-11`), or Mon-DD-YYYY (`Jun-11-2002`).
+
+2. **International Phone Numbers**
+    
+    The `PHONE_NUMBER` field in the `add` command only accepts numbers, which can be restrictive for international numbers. We plan to allow spaces and characters such as `+-()` for more flexibility when adding numbers.
+
+3. **Regex parsing for find and filter**
+
+    We plan to support regex parsing to allow users to more robustly match the tags or search parameters.
+
+4. **Flexible tags**
+    
+    Currently, `TAGS` are limited only to alphanumeric characters. We plan to allow more characters such as spaces and special characters to provide users more flexibility in the tags they can add to people.
+
+5. **Warn on duplicate info**
+
+    Currently, the `new` command allows weddings with the same name, but different date to be added, as well as weddings with the same name, with varying amount of spaces. We plan to display a warning if similar duplicates are found, so that users can notice and correct the errors if unintended.
+
+6. **More flexible names**
+
+    Currently, the `NAME` field does not support some common characters such as `/`. We plan to add support for these characters in the future.

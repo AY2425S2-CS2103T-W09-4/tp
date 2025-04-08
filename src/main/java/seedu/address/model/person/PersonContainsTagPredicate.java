@@ -1,6 +1,8 @@
 package seedu.address.model.person;
 
+import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.tag.Tag;
@@ -9,15 +11,15 @@ import seedu.address.model.tag.Tag;
  * Tests that a {@code Person}'s {@code Tag} matches the tag given.
  */
 public class PersonContainsTagPredicate implements Predicate<Person> {
-    private final Tag tag;
+    private final List<Tag> tags;
 
-    public PersonContainsTagPredicate(String tag) {
-        this.tag = new Tag(tag);
+    public PersonContainsTagPredicate(List<String> tags) {
+        this.tags = tags.stream().map(Tag::new).collect(Collectors.toList());
     }
 
     @Override
     public boolean test(Person person) {
-        return person.getTags().contains(tag);
+        return tags.stream().anyMatch(tag -> person.getTags().contains(tag));
     }
 
     @Override
@@ -32,11 +34,11 @@ public class PersonContainsTagPredicate implements Predicate<Person> {
         }
 
         PersonContainsTagPredicate otherPersonContainsTagPredicate = (PersonContainsTagPredicate) other;
-        return tag.equals(otherPersonContainsTagPredicate.tag);
+        return tags.equals(otherPersonContainsTagPredicate.tags);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("tag", tag).toString();
+        return new ToStringBuilder(this).add("tags", tags).toString();
     }
 }

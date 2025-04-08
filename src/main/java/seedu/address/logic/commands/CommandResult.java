@@ -3,8 +3,10 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.model.wedding.Wedding;
 
 /**
  * Represents the result of a command execution.
@@ -19,6 +21,10 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    private final boolean clearDisplay;
+
+    private final Optional<Wedding> wedding;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
@@ -26,6 +32,34 @@ public class CommandResult {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+        this.clearDisplay = false;
+        this.wedding = Optional.empty();
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser}
+     * and a flag indicating whether to clear the display.
+     *
+     * @param feedbackToUser Feedback message to be shown to the user.
+     * @param clearDisplay Whether the display should be cleared.
+     */
+    public CommandResult(String feedbackToUser, boolean clearDisplay) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.showHelp = false;
+        this.exit = false;
+        this.clearDisplay = true;
+        this.wedding = Optional.empty();
+    }
+
+    /**
+     * Constructs a {@CommandResult} containing the wedding to show
+     */
+    public CommandResult(String feedbackToUser, Wedding wedding) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.showHelp = false;
+        this.exit = false;
+        this.clearDisplay = false;
+        this.wedding = Optional.of(requireNonNull(wedding));
     }
 
     /**
@@ -46,6 +80,14 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
+    }
+
+    public boolean isClearDisplay() {
+        return clearDisplay;
+    }
+
+    public Optional<Wedding> getSelectedWedding() {
+        return wedding;
     }
 
     @Override
