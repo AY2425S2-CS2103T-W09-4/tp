@@ -6,7 +6,34 @@
 
 # HappyEverAfter Developer Guide
 
-<!-- * Table of Contents -->
+## Table of Contents
+- [HappyEverAfter Developer Guide](#happyeverafter-developer-guide)
+  - [Table of Contents](#table-of-contents)
+  - [**Setting up, getting started**](#setting-up-getting-started)
+  - [**Design**](#design)
+    - [Architecture](#architecture)
+    - [UI component](#ui-component)
+    - [Logic component](#logic-component)
+    - [WeddingModel component](#weddingmodel-component)
+      - [Key Model Classes](#key-model-classes)
+    - [Storage component](#storage-component)
+    - [Common classes](#common-classes)
+  - [**Documentation, logging, testing, configuration, dev-ops**](#documentation-logging-testing-configuration-dev-ops)
+  - [**Appendix: Requirements**](#appendix-requirements)
+    - [Product scope](#product-scope)
+    - [User stories](#user-stories)
+    - [Use cases](#use-cases)
+    - [Non-Functional Requirements](#non-functional-requirements)
+    - [Glossary](#glossary)
+  - [**Appendix: Instructions for Manual Testing**](#appendix-instructions-for-manual-testing)
+    - [Launch and Shutdown](#launch-and-shutdown)
+    - [Adding a Wedding](#adding-a-wedding)
+    - [Managing Weddings](#managing-weddings)
+    - [Managing Members](#managing-members)
+    - [Saving Data](#saving-data)
+  - [**Appendix: Planned enhancements**](#appendix-planned-enhancements)
+
+
 <page-nav-print />
 
 ---
