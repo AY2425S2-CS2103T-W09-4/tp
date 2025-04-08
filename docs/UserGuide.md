@@ -18,22 +18,22 @@ Wedding planning can get hectic, especially for a busy planner like you, and wit
 3. [GUI Overview](#gui-overview)
 4. [Features](#features)
     - [Wedding Management](#wedding-management)
-        - [Creating a new wedding](#creating-a-wedding-new)
-        - [Opening a wedding](#opening-a-wedding-open)
-        - [Closing a wedding](#closing-the-current-wedding-close)
-        - [Listing all weddings](#listing-all-weddings-list)
-        - [Sorting weddings by date](#sorting-weddings-by-date-sort)
-        - [Deleting a wedding](#deleting-a-wedding-delete)
-        - [Deleting all weddings](#clearing-all-weddings-clear)
-    - [Member Management](#member-management)
-        - [Adding a person to a wedding](#adding-a-person-to-a-wedding-add)
-        - [Finding people of weddings](#finding-people-find)
-        - [Filtering for people by tags](#filtering-by-tag-filter)
-        - [Removing a person](#removing-a-person-remove)
-        - [Editing a person](#editing-a-person-edit)
+        - [Listing all weddings: `list`](#listing-all-weddings-list)
+        - [Creating a new wedding: `new`](#creating-a-wedding-new)
+        - [Opening a wedding: `open`](#opening-a-wedding-open)
+        - [Closing a wedding: `close`](#closing-the-current-wedding-close)
+        - [Sorting weddings by date: `sort`](#sorting-weddings-by-date-sort)
+        - [Deleting a wedding; `delete`](#deleting-a-wedding-delete)
+        - [Clearing all weddings: `clear`](#clearing-all-weddings-clear)
+    - [Person Management](#person-management)
+        - [Adding a person to a wedding: `add`](#adding-a-person-to-a-wedding-add)
+        - [Finding people of weddings: `find`](#finding-people-find)
+        - [Filtering for people by tags: `filter`](#filtering-by-tag-filter)
+        - [Removing a person: `remove`](#removing-a-person-remove)
+        - [Editing a person: `edit`](#editing-a-person-edit)
     - [System Commands](#system-commands)
-        - [Viewing help](#viewing-help--help)
-        - [Exiting the program](#exiting-the-program-exit)
+        - [Viewing help: `help`](#viewing-help-help)
+        - [Exiting the program: `exit`](#exiting-the-program-exit)
 5. [Data Storage](#data-storage)
 6. [FAQ](#faq)
 7. [Command Summary](#command-summary)
@@ -268,7 +268,7 @@ Note:
 
 [Back to Table of Contents](#table-of-contents)
 
-## People Management
+## Person Management
 
 ### Adding a person to a wedding: `add`
 
@@ -374,7 +374,7 @@ open a wedding based on the result. A sample output is shown below:
 
 ### Filtering by tag: `filter`
 
-You can filter the list of the currently [opened](#opening-a-wedding--open) wedding to display all people that match at least one of the tags.
+You can filter the list of the currently [opened](#opening-a-wedding-open) wedding to display all people that match at least one of the tags.
 
 Format: `filter [TAG]…​`
 
@@ -467,7 +467,7 @@ Examples:
 
 ## System commands
 
-### Viewing help : `help`
+### Viewing help: `help`
 
 You can view a message providing a web link to access the User Guide.
 
