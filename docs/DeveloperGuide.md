@@ -205,14 +205,6 @@ The `Storage` component,
 
 Classes used by multiple components are in the `seedu.address.commons` package.
 
-<!-----
-
- ## **Implementation**
-
-This section describes some noteworthy details on how certain features are implemented.
-
-
-
 ## **Documentation, logging, testing, configuration, dev-ops**
 
 - [Documentation guide](Documentation.md)
