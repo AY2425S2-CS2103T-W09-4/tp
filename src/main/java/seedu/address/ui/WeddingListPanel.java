@@ -28,7 +28,6 @@ public class WeddingListPanel extends UiPart<Region> {
         super(FXML);
         weddingListView.setItems(weddingList);
         weddingListView.setCellFactory(listView -> new WeddingListViewCell());
-        weddingListView.setMouseTransparent(true);
     }
 
     public ListView<Wedding> getListView() {
